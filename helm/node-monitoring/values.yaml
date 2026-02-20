@@ -1,6 +1,6 @@
 image:
   repository: hoainhan18041997/api_services
-  tag: f7f0fe5a8e69d67c15ddb4770155053343ef4b0d
+  tag: 36a80d1e7d3c2b7ef0dd4a1f1349940c5ef1a90f
 
 service:
   port: 3000
