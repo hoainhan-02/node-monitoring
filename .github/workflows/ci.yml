@@ -1,0 +1,36 @@
+name: Node CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
+
+      - name: Build & Push
+        run: |
+          docker build -t hoainhan18041997/node-monitoring:${{ github.sha }} .
+          docker push hoainhan18041997/node-monitoring:${{ github.sha }}
+      - name: Update image tag
+        run: |
+          sed -i "s/tag:.*/tag: ${{ github.sha }}/" helm/node-monitoring/values.yaml
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Commit & push
+        run: |
+          git add helm/node-monitoring/values.yaml
+          git commit -m "chore: update image tag to ${{ github.sha }}"
+          git push
+

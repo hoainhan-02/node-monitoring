@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitoring-node-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitoring-node
+  template:
+    metadata:
+      labels:
+        app: monitoring-node
+    spec:
+      containers:
+        - name: monitoring-node
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 3000

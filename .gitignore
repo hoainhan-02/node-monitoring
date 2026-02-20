@@ -1,0 +1,7 @@
+node_modules/
+.env
+dist/
+node-monitoring-key
+node-monitoring-key.pub
+helm/node-monitoring-key
+helm/node-monitoring-key.pub
