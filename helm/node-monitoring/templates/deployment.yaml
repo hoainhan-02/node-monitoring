@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: monitoring-node-deployment
+  namespace: {{.Values.namespace.name}}
 spec:
   replicas: 1
   selector:
@@ -12,6 +13,8 @@ spec:
       labels:
         app: monitoring-node
     spec:
+      imagePullSecrets:
+          {{- toYaml .Values.imagePullSecrets | nindent 8 }}
       containers:
         - name: monitoring-node
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -5,3 +5,4 @@ node-monitoring-key
 node-monitoring-key.pub
 helm/node-monitoring-key
 helm/node-monitoring-key.pub
+config.json
