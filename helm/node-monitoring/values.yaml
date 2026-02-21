@@ -1,6 +1,6 @@
 image:
   repository: hoainhan18041997/node-monitoring
-  tag: 36a80d1e7d3c2b7ef0dd4a1f1349940c5ef1a90f
+  tag: fd447cec3a7a305cf44ba6a33231a0e2fbdafdd2
 
 service:
   port: 3000
